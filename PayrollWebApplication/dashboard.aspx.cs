@@ -36,10 +36,10 @@ namespace PayrollWebApplication
             double other = double.Parse(result["other"].ToString());
             double deductions = double.Parse(result["deductions"].ToString());
 
-            double da_c = basic = (da / 100);
-            double hra_c = basic = (hra / 100);
-            double other_c = basic = (other / 100);
-            double deductions_c = basic = (deductions / 100);
+            double da_c = basic * (da / 100);
+            double hra_c = basic * (hra / 100);
+            double other_c = basic * (other / 100);
+            double deductions_c = basic * (deductions / 100);
 
 
             Session["basic"] = basic;
@@ -63,6 +63,9 @@ namespace PayrollWebApplication
                 string query = "INSERT INTO employee (name,role) values ('"+TxtName.Text+"','"+TxtRole.Text+"')";
                 SqlCommand sqlcmd = new SqlCommand(query, sqlconn);
                 sqlcmd.ExecuteNonQuery();
+
+                TxtName.Text = "";
+                TxtRole.Text = "";
             }
 
 
@@ -72,11 +75,16 @@ namespace PayrollWebApplication
         {
             using (SqlConnection sqlconn = new SqlConnection(connectionString))
             {
+                if(!Page.IsPostBack) 
+                {
                 sqlconn.Open();
                 string query = "DELETE FROM employee WHERE Name = ('" + TxtName.Text + "')";
                 SqlCommand sqlcmd = new SqlCommand(query, sqlconn);
                 sqlcmd.ExecuteNonQuery();
 
+                    TxtName.Text = "";
+                    
+                }
             }
         }
     }

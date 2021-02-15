@@ -16,6 +16,15 @@
             
             <div>
             <asp:DropDownList ID="emp" runat="server" DataSourceID="SqlDataSource1" DataTextField="name" DataValueField="role" AutoPostBack="true" CssClass="form-control">
+                <asp:ListItem Selected="True"></asp:ListItem>
+                <asp:ListItem Selected="True"></asp:ListItem>
+                <asp:ListItem Selected="True"></asp:ListItem>
+                <asp:ListItem Selected="True"></asp:ListItem>
+                <asp:ListItem Selected="True"></asp:ListItem>
+                <asp:ListItem Selected="True"></asp:ListItem>
+                <asp:ListItem Selected="True"></asp:ListItem>
+                <asp:ListItem Selected="True"></asp:ListItem>
+                <asp:ListItem Selected="True"></asp:ListItem>
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:payrollConnectionString %>" SelectCommand="SELECT * FROM [employee]"></asp:SqlDataSource>
             </div>
